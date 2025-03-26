@@ -1,6 +1,6 @@
 # 💻 Projeto: WordPress com Docker + RDS + EFS + Load Balancer na AWS
 
-Este repositório/documentação descreve todos os passos que segui para criar uma infraestrutura completa e escalável para rodar o WordPress na AWS usando:
+Esssa documentação descreve todos os passos que segui para criar uma infraestrutura completa e escalável para rodar o WordPress na AWS usando:
 
 - EC2 com Amazon Linux 2023
 - Docker + Docker Compose
