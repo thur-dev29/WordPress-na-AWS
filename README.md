@@ -9,8 +9,6 @@ Esssa documentação descreve todos os passos que segui para criar uma infraestr
 - Load Balancer (ALB)
 - VPC com sub-redes públicas e privadas
 
-> **OBS:** Este projeto teve como objetivo o aprendizado, então documentei inclusive os erros e soluções encontradas no caminho :)
-
 ---
 
 ## 📀 Arquitetura da Solução
@@ -24,17 +22,6 @@ Usuário → ALB (Load Balancer)
            ↘
           RDS (MySQL)
 ```
-
----
-
-## ✅ Pré-requisitos
-
-- Conta AWS
-- Acesso ao console ou CLI
-- Par de chaves SSH para acessar a EC2
-- Familiaridade básica com Linux e terminal
-
----
 
 ## ⚒️ Etapas
 
@@ -69,10 +56,6 @@ Usuário → ALB (Load Balancer)
 - Crie um **DB Subnet Group** com as duas subnets privadas
 - Marque como **"sem acesso público"**
 - Importante: o banco `wordpress` deve ser criado manualmente depois
-
-> ⚠️ **Erro que ocorreu**:  
-> "The DB subnet group doesn't meet Availability Zone (AZ) coverage requirement."  
-> Solução: adicionar ao menos 2 subnets privadas, em AZs diferentes.
 
 ---
 
@@ -139,10 +122,6 @@ EOF
 docker-compose up -d
 ```
 
-> ⚠️ **Erro que ocorreu:**  
-> Após iniciar, `curl localhost` travava. Isso foi resolvido ao verificar os containers com `docker ps` e revisar os logs.  
-> O erro real: `Error establishing a database connection`.
-
 ---
 
 ### 6. Permissões entre EC2 e RDS (SGs)
@@ -195,40 +174,3 @@ CREATE DATABASE wordpress;
 - Siga a instalação do WordPress normalmente
 
 ---
-
-## 🧠 Erros enfrentados e soluções
-
-| Erro                                               | Solução                                                                 |
-|----------------------------------------------------|--------------------------------------------------------------------------|
-| Subnet group do RDS com uma única AZ               | Adicione mais uma subnet em outra zona (ex: us-east-1b)                 |
-| EC2 não conecta no RDS (timeout porta 3306)        | Configurar regra de inbound no SG do RDS para liberar o SG da EC2       |
-| `mysql: command not found`                         | Instalar com `sudo dnf install -y mariadb105`                           |
-| WordPress com "Error establishing a DB connection" | Corrigir variáveis do Compose, criar o banco manualmente                |
-
----
-
-## 🧪 Verificações finais
-
-- [x] EC2 com Docker e Compose funcionando
-- [x] RDS acessível
-- [x] Banco criado (`wordpress`)
-- [x] EFS montado e sendo usado pelo WordPress
-- [x] Load Balancer distribuindo corretamente
-- [x] WordPress acessível no navegador
-
----
-
-## 💡 Possíveis próximos passos
-
-- Adicionar HTTPS com ACM + Load Balancer
-- Subir múltiplas instâncias EC2 para escalar
-- Automatizar tudo com Terraform ou AWS CDK
-- Adicionar CloudFront + WAF para segurança e performance
-
----
-
-## ✍️ Autor
-
-Projeto realizado por mim como parte de aprendizado em infraestrutura AWS.  
-Todos os testes, erros e ajustes foram feitos **de verdade**, então essa doc é baseada na prática mesmo. 😄
-
