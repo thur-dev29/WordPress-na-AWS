@@ -48,11 +48,12 @@ Usuário → ALB (Load Balancer)
 
 **Sub-redes:**
 
-| Tipo      | Nome              | CIDR           | AZ           |
-|-----------|-------------------|----------------|--------------|
-| Pública   | public-subnet     | 10.0.1.0/24    | us-east-1a   |
-| Privada   | private-subnet    | 10.0.2.0/24    | us-east-1a   |
-| Privada 2 | private-subnet-2  | 10.0.3.0/24    | us-east-1b   |
+| Tipo    | Nome              | CIDR           | AZ           |
+|---------|-------------------|----------------|--------------|
+| Pública | public-subnet-1   | 10.0.1.0/24    | us-east-1a   |
+| Pública | public-subnet-2   | 10.0.2.0/24    | us-east-1b   |
+| Privada | private-subnet-1  | 10.0.3.0/24    | us-east-1a   |
+| Privada | private-subnet-2  | 10.0.4.0/24    | us-east-1b   |
 
 > 🔒 Crie tabela de rotas pública com Internet Gateway e associe à sub-rede pública.  
 > 🔒 Sub-redes privadas não devem ter acesso direto à internet (a não ser por NAT Gateway, opcional).
