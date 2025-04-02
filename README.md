@@ -1,4 +1,4 @@
-# Deploy Escalável do WordPress na AWS com Classic Load Balancer (CLB)
+# Deploy Escalável do WordPress na AWS com Classic Load Balancer
 
 Este documento fornece um guia detalhado para configurar e implantar o WordPress na AWS, utilizando uma arquitetura robusta com **EC2, RDS, EFS, Classic Load Balancer e Auto Scaling Group**. O objetivo é criar uma instalação do WordPress altamente **disponível, escalável e segura**.
 
