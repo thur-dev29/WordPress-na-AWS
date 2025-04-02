@@ -1,6 +1,6 @@
 # Deploy Escalável do WordPress na AWS com Classic Load Balancer (CLB)
 
-Este documento fornece um guia detalhado para configurar e implantar o WordPress na AWS, utilizando uma arquitetura robusta com **EC2 (sub-redes privadas), RDS, EFS, Classic Load Balancer (CLB) e Auto Scaling Group (ASG)**. O objetivo é criar uma instalação do WordPress altamente **disponível, escalável e segura**.
+Este documento fornece um guia detalhado para configurar e implantar o WordPress na AWS, utilizando uma arquitetura robusta com **EC2, RDS, EFS, Classic Load Balancer e Auto Scaling Group**. O objetivo é criar uma instalação do WordPress altamente **disponível, escalável e segura**.
 
 ## Visão Geral da Arquitetura
 
@@ -11,7 +11,7 @@ Este documento fornece um guia detalhado para configurar e implantar o WordPress
 - **RDS**: Banco de dados MySQL gerenciado em sub-rede privada.
 - **EFS**: Armazenamento compartilhado para arquivos WordPress, acessível pelas instâncias EC2.
 - **Auto Scaling Group (ASG)**: Gerencia o número de instâncias EC2 baseado em políticas de escalabilidade.
-- **Classic Load Balancer (CLB)**: Distribui o tráfego de entrada (HTTP/S) para as instâncias registradas no ASG.
+- **Classic Load Balancer (CLB)**: Distribui o tráfego de entrada para as instâncias registradas no ASG.
 - **Docker & Docker Compose**: Para conteinerizar a aplicação WordPress.
 
 ---
@@ -72,9 +72,8 @@ Este documento fornece um guia detalhado para configurar e implantar o WordPress
 
 1. Criar um **Launch Template** `wordpress-launch-template` com:
    - AMI: **Amazon Linux 2** ou **AL2023**.
-   - Tipo de instância: `t3.micro`.
+   - Tipo de instância: `t2.micro`.
    - Security Group: `ec2-sg`.
-   - **Desativar IP público**.
 2. Adicionar **User Data**:
    ```bash
    #!/bin/bash
@@ -137,7 +136,7 @@ Este documento fornece um guia detalhado para configurar e implantar o WordPress
 ### 6. Criar o Classic Load Balancer (CLB)
 
 1. Criar um **Classic Load Balancer** `wordpress-clb` com:
-   - **Listeners:** HTTP (80) e opcionalmente HTTPS (443).
+   - **Listeners:** HTTP.
    - **Sub-redes públicas**.
    - **Security Group:** `clb-sg`.
    - **Health Check:** `HTTP /wp-admin/install.php`.
@@ -148,12 +147,4 @@ Este documento fornece um guia detalhado para configurar e implantar o WordPress
 ### 7. Teste e Monitoramento
 
 - Acesse o **Nome DNS** do Load Balancer para testar o WordPress.
-- Configure um **domínio** e um **certificado SSL** via ACM.
-- Monitore **métricas do ASG** e **CloudWatch Logs**.
-
 ---
-
-## Conclusão
-
-Agora você tem um **WordPress escalável e altamente disponível** na AWS! 🚀
-
