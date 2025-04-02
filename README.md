@@ -195,7 +195,7 @@ docker-compose up -d
    - Default action → Forward to wordpress-target-group
 11. Security Groups
    - Crie um novo Security Group com as seguintes regras:
-     -Type: HTTP
+     - Type: HTTP
      - Protocol: TCP
      - Port Range: 80
      - Source: 0.0.0.0/0 (Acesso público)
@@ -222,20 +222,19 @@ docker-compose up -d
 11. Clique em Create launch template
 12. Voltar ao Auto Scaling Group
 13. Choose launch template → Selecione wordpress-launch-template
-14. Choose instance purchase options → Selecione On-Demand Instances
-15. Network → Escolha a VPC correta
-16. Load Balancing:
+14. Network → Escolha a VPC correta
+15. Load Balancing:
    -Escolha Attach to an existing load balancer
    -Selecione o Target Group criado anteriormente
-17. Health Check Type → Selecione ELB
-18. Group size:
+16. Health Check Type → Selecione ELB
+17. Group size:
    - Desired capacity: 2
    - Minimum capacity: 2
    - Maximum capacity: 5
-19. Scaling Policies → Escolha Target Tracking Scaling Policy
+18. Scaling Policies → Escolha Target Tracking Scaling Policy
    - Metric Type → "Average CPU utilization"
    - Target Value → 50%
-20. Clique em Create Auto Scaling Group
+19. Clique em Create Auto Scaling Group
 
 ---
 
