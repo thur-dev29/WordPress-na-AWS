@@ -112,6 +112,8 @@ O RDS armazenará os dados do WordPress.
    docker-compose up -d
    ```
 
+![Captura de tela 2025-04-03 204628](https://github.com/user-attachments/assets/7057d6c9-b464-4f90-af4b-5efe25f440cc)
+
 ---
 ## **5. Criar o Auto Scaling Group (ASG)**
 
@@ -147,3 +149,5 @@ O RDS armazenará os dados do WordPress.
 - Siga a instalação do WordPress normalmente
 
 ---
+
+![Captura de tela 2025-04-03 204641](https://github.com/user-attachments/assets/91920e78-f916-4d58-9e40-270dc3572f5a)
