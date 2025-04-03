@@ -139,3 +139,11 @@ O RDS armazenará os dados do WordPress.
    - Adicione o **ASG** para receber tráfego
 
 ---
+
+### 7. Acessar WordPress
+
+- Pegue o DNS do Load Balancer
+- Acesse no navegador: `http://wordpress-alb-xxxxxx.us-east-1.elb.amazonaws.com`
+- Siga a instalação do WordPress normalmente
+
+---
